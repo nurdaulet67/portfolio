@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Нурдаулет — портфолио</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;600&display=swap">
+<style>
+:root{--bg:#0e0e0f;--card:#18181a;--ink:#f4f2ec;--lime:#2563ff;--lime-text:#4f8bff;--ink-70:rgba(244,242,236,.7);--ink-25:rgba(244,242,236,.25);--ink-12:rgba(244,242,236,.12);--gutter:clamp(16px,6.25vw,120px);--t18:clamp(12px,.94vw,18px);--t20:clamp(14px,1.04vw,20px);--t22:clamp(15px,1.15vw,22px);--t24:clamp(15px,1.25vw,24px);--t26:clamp(16px,1.35vw,26px);--t28:clamp(17px,1.46vw,28px);--gap:clamp(12px,1.25vw,24px);--radius:clamp(18px,1.46vw,28px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg)}
+h1,h2,h3,p,figure{margin:0}
+a{color:inherit;text-decoration:none}
+a:hover{color:inherit}
+.page{background:var(--bg);color:var(--ink);font-family:Onest,system-ui,sans-serif;overflow-x:clip}
+.wrap{max-width:1920px;margin-inline:auto;padding-inline:var(--gutter)}
+.display{font-family:Unbounded,system-ui,sans-serif;font-weight:500}
+.lime{color:var(--lime-text)}
+.title{font-size:clamp(32px,4.17vw,80px);line-height:1.24;letter-spacing:-.04em}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:clamp(12px,1.15vw,22px) clamp(20px,1.875vw,36px);border-radius:100px;font-size:var(--t22);font-weight:500;white-space:nowrap}
+.btn-line{border:1.5px solid var(--ink-25)}
+.btn-lime{background:var(--lime);color:#fff}
+.btn-dark{background:var(--bg);color:var(--ink);font-size:var(--t26);padding:clamp(14px,1.46vw,28px) clamp(24px,2.29vw,44px)}
+.nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px;padding-block:clamp(16px,2.29vw,44px)}
+.logo{display:inline-flex;align-items:center;min-height:44px;font-family:Unbounded,system-ui,sans-serif;font-weight:600;font-size:clamp(18px,1.35vw,26px);letter-spacing:-.02em}
+.links{display:flex;flex-wrap:wrap;gap:clamp(16px,2.5vw,48px);font-size:var(--t20);color:var(--ink-70)}
+.links a{display:inline-flex;align-items:center;min-height:44px}
+.hero{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(28px,2.92vw,56px);padding-top:clamp(40px,5.2vw,100px);padding-bottom:clamp(40px,3.75vw,72px)}
+.status{display:inline-flex;align-items:center;gap:12px;padding:12px 22px 12px 20px;border-radius:100px;background:var(--card);font-size:var(--t20);font-weight:500}
+.status i{display:block;flex:none;width:10px;height:10px;border-radius:50%;background:var(--lime-text)}
+h1{font-size:clamp(36px,6.9vw,132px);line-height:1.02;letter-spacing:-.05em}
+.h1-line{display:block}
+.hero-bottom{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px 48px;width:100%}
+.hero-text{flex:0 1 694px;font-size:var(--t28);line-height:1.4;color:var(--ink-70)}
+.hero-text b{font-weight:600;color:rgba(244,242,236,.85)}
+.hero-btns{display:flex;flex-wrap:wrap;gap:16px}
+.strip{--h:clamp(280px,26.04vw,500px);overflow:hidden;padding-block:40px;margin-top:-20px}
+.strip-track{display:flex;gap:var(--gap);width:max-content;animation:strip 70s linear infinite}
+.strip-track img{display:block;height:var(--h);width:auto;object-fit:cover;border-radius:var(--radius);flex:none}
+.s916{aspect-ratio:281/500}.s45{aspect-ratio:400/500}.s11{aspect-ratio:1}.s169{aspect-ratio:889/500}
+@keyframes strip{to{transform:translateX(calc(-50% - var(--gap)/2))}}
+@media (prefers-reduced-motion:reduce){.strip{overflow-x:auto}.strip-track{animation:none}}
+.eyebrow{display:flex;align-items:center;gap:14px;font-size:var(--t18);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-70)}
+.eyebrow::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--lime-text)}
+.about{padding-top:clamp(64px,10.42vw,200px);padding-bottom:clamp(64px,8.33vw,160px)}
+.about-row{display:grid;grid-template-columns:minmax(0,500fr) minmax(0,1180fr);gap:24px 0}
+.about-row .eyebrow{align-self:start}
+.about-text{font-size:clamp(24px,2.6vw,50px);line-height:1.3;letter-spacing:-.03em}
+.about-last{display:block}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap);margin-top:clamp(40px,5vw,96px)}
+.stat{border-top:1px solid var(--ink-12);padding-top:clamp(20px,1.93vw,37px)}
+.stat-num{font-size:clamp(44px,5.42vw,104px);line-height:1.24;letter-spacing:-.04em}
+.stat-label{margin-top:20px;font-size:var(--t24);line-height:1.4;color:var(--ink-70)}
+.head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 48px}
+.head .eyebrow{margin-bottom:clamp(16px,1.46vw,28px)}
+.head-text{flex:0 1 497px;font-size:var(--t24);line-height:1.4;color:var(--ink-70)}
+.services{padding-block:clamp(56px,8.33vw,160px)}
+.process{padding-top:clamp(56px,6.25vw,120px);padding-bottom:clamp(56px,8.33vw,160px)}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:clamp(32px,3.33vw,64px)}
+.card{display:flex;flex-direction:column;justify-content:space-between;gap:48px;background:var(--card);border-radius:var(--radius);padding:clamp(24px,2.08vw,40px)}
+.service{min-height:clamp(240px,20.83vw,400px)}
+.card-num{font-size:var(--t22);color:var(--ink-70)}
+.card h3{font-family:Unbounded,system-ui,sans-serif;font-weight:500;font-size:clamp(20px,1.67vw,32px);line-height:1.2;letter-spacing:-.02em}
+.card-text{margin-top:16px;font-size:clamp(15px,1.12vw,22px);line-height:1.4;color:var(--ink-70)}
+.card-lime{background:var(--lime);color:#fff}
+.card-lime .card-num,.card-lime .card-text{color:#fff}
+.step{justify-content:flex-start;gap:clamp(32px,2.92vw,56px);padding-bottom:clamp(24px,2.29vw,44px)}
+.step-num{font-family:Unbounded,system-ui,sans-serif;font-weight:500;font-size:clamp(36px,2.92vw,56px);line-height:1.24;color:var(--lime-text)}
+.cases{padding-top:clamp(56px,8.33vw,160px);padding-bottom:clamp(56px,6.25vw,120px)}
+.case,.others{margin-top:clamp(64px,6.25vw,120px)}
+.case-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-top:clamp(0px,2.55vw,49px)}
+.case-kind{font-size:var(--t22);color:var(--ink-70)}
+.tags{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}
+.tags li{padding:clamp(7px,.57vw,11px) clamp(12px,.99vw,19px);border:1.5px solid var(--ink-25);border-radius:100px;font-size:var(--t18);color:var(--ink-70)}
+.case-title{margin-top:clamp(16px,1.46vw,28px);font-size:clamp(38px,6.25vw,120px);line-height:1.24;letter-spacing:-.04em}
+.brief{display:grid;grid-template-columns:minmax(0,418fr) minmax(0,590fr) minmax(0,485fr);gap:24px clamp(32px,4.95vw,95px);margin-top:clamp(20px,2.29vw,44px);padding-bottom:clamp(8px,1.04vw,20px)}
+.brief h3{font-size:var(--t18);font-weight:400;letter-spacing:.1em;color:var(--lime-text)}
+.brief p{margin-top:14px;font-size:var(--t26);line-height:1.4}
+.caption{display:flex;align-items:baseline;gap:20px;padding-top:24px;margin-block:var(--gap);font-size:var(--t22);color:var(--ink-70)}
+.caption span{font-size:var(--t20);color:var(--lime-text)}
+.grid{display:grid;gap:var(--gap)}
+.grid + .grid,.grid + .work,.work + .grid{margin-top:var(--gap)}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g2,.bento,.bento-sm{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bento-sm{display:grid;gap:var(--gap)}
+.work{display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;overflow-wrap:anywhere;border-radius:var(--radius);background:var(--card);font-size:var(--t18);color:var(--ink-70)}
+.r45{aspect-ratio:4/5}.r916{aspect-ratio:402/715}.r11{aspect-ratio:1}.r169{aspect-ratio:16/9}.r-wide{aspect-ratio:1680/782}.r-banner{aspect-ratio:1680/276}.r-tall{aspect-ratio:544/1224}
+.bento-sm .work{aspect-ratio:402/505.5}
+.others-head{padding-top:clamp(0px,2.55vw,49px);margin-bottom:clamp(28px,2.5vw,48px)}
+.contact{padding-bottom:clamp(32px,3.33vw,64px)}
+.cta{background:var(--lime);color:#fff;border-radius:clamp(24px,2.5vw,48px);padding:clamp(28px,5vw,96px) clamp(20px,5vw,96px) clamp(28px,4.17vw,80px)}
+.cta .eyebrow{color:#fff}
+.cta .eyebrow::before{background:#fff}
+.cta h2{margin-top:clamp(28px,2.92vw,56px);font-size:clamp(34px,6.25vw,120px);line-height:1.09;letter-spacing:-.04em}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 48px;margin-top:clamp(28px,2.92vw,56px)}
+.cta-text{flex:0 1 435px;font-size:var(--t28);line-height:1.4}
+.cta-text b{font-weight:600}
+.cta-links{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px 48px;margin-top:clamp(28px,2.92vw,56px);padding-top:clamp(28px,2.92vw,56px);border-top:1px solid rgba(255,255,255,.25)}
+.cta-label{display:block;font-size:var(--t20);color:#fff}
+.cta-links a{display:inline-flex;align-items:center;min-height:44px;margin-top:2px;font-family:Unbounded,system-ui,sans-serif;font-weight:500;font-size:clamp(14px,1.56vw,30px);overflow-wrap:anywhere}
+.footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 32px;padding-block:clamp(16px,1.56vw,30px) clamp(24px,2.5vw,48px);font-size:var(--t20);color:var(--ink-70)}
+.footer a{display:inline-flex;align-items:center;min-height:44px}
+html,body,.page{scroll-behavior:smooth}
+:root{--ease:cubic-bezier(.22,1,.36,1);--glow:0 0 0 1.5px rgba(79,139,255,.9),0 0 28px rgba(37,99,255,.45)}
+.btn{transition:background-color .45s var(--ease),border-color .45s var(--ease),color .45s var(--ease),transform .45s var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn-lime:hover{background:#fff;color:#0e0e0f}
+.btn-line:hover{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+.btn-dark:hover{background:#2a2a2d;color:var(--ink)}
+.work,.card,.status,.strip-track img{position:relative;transition:box-shadow .5s var(--ease),transform .5s var(--ease)}
+.tags li{transition:border-color .5s var(--ease),box-shadow .5s var(--ease),color .5s var(--ease)}
+.links a,.footer a{transition:color .3s var(--ease)}
+.links a:hover,.footer a:hover{color:var(--ink)}
+.cta-links a:hover{text-decoration:underline}
+@media (hover:hover){
+.card:hover,.status:hover{z-index:1;box-shadow:var(--glow)}
+.work:hover,.strip-track img:hover{z-index:1;box-shadow:0 0 0 1px rgba(255,255,255,.7),0 0 18px rgba(255,255,255,.1)}
+.work:hover,.card:hover{transform:translateY(-4px)}
+.tags li:hover{border-color:var(--lime-text);color:var(--ink);box-shadow:0 0 16px rgba(37,99,255,.4)}
+}
+@keyframes load{from{opacity:0;translate:0 28px}to{opacity:1;translate:0 0}}
+.nav,.hero>*,.strip{animation:load 1s var(--ease) both}
+.hero>:nth-child(2){animation-delay:.1s}
+.hero>:nth-child(3){animation-delay:.2s}
+.strip{animation-delay:.3s}
+@keyframes rise{from{opacity:0;translate:0 44px}to{opacity:1;translate:0 0}}
+@supports (animation-timeline:view()){
+.about-row,.stat,.head,.card,.case-top,.case-title,.brief>div,.caption,.work,.cta{animation:rise linear both;animation-timeline:view();animation-range:entry 0px entry 220px}
+}
+@media (prefers-reduced-motion:reduce){
+html,body,.page{scroll-behavior:auto}
+*,*::before,*::after{animation:none!important;transition:none!important}
+}
+@media (max-width:1100px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.about-row,.brief{grid-template-columns:1fr}.about-last{display:inline}}
+@media (max-width:720px){.links{order:3;width:100%}.cards,.stats,.bento,.g3,.g2{grid-template-columns:1fr}.cta-links{flex-direction:column}.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.bento>.work{aspect-ratio:4/5}.btn{white-space:normal;text-align:center}.hero-btns,.hero-btns .btn,.cta-row .btn{width:100%}}
+</style>
+</helmet>
+<div class="page" id="top">
+
+<header class="wrap nav">
+  <a class="logo" href="#top" onClick="{{ go }}">Нурдаулет</a>
+  <nav class="links" aria-label="Основное меню">
+    <a href="#about" onClick="{{ go }}">Обо мне</a>
+    <a href="#services" onClick="{{ go }}">Услуги</a>
+    <a href="#cases" onClick="{{ go }}">Кейсы</a>
+    <a href="#contact" onClick="{{ go }}">Контакты</a>
+  </nav>
+  <a class="btn btn-line" href="#contact" onClick="{{ go }}">Связаться ↗</a>
+</header>
+
+<section class="wrap hero">
+  <p class="status"><i aria-hidden="true"></i>Открыт для новых проектов</p>
+  <h1 class="display"><span class="h1-line">Дизайн, который</span> <span class="h1-line">выделяет <span class="lime">ваш бренд</span></span></h1>
+  <div class="hero-bottom">
+    <p class="hero-text">Всем привет, я <b>Нурдаулет</b>, Графический Дизайнер. Делаю SMM-визуалы, рекламные креативы и инфографики для маркетплейсов e-commerce.</p>
+    <div class="hero-btns">
+      <a class="btn btn-lime" href="#contact" onClick="{{ go }}">Обсудить проект ↗</a>
+      <a class="btn btn-line" href="#cases" onClick="{{ go }}">Смотреть кейсы</a>
+    </div>
+  </div>
+</section>
+
+<section class="strip" aria-label="Примеры работ">
+  <div class="strip-track">
+    <img class="s916" src="/_blob/aaee83e3cced7be19a103bffd9465a53" alt="Сторис с туром на умру">
+    <img class="s45" src="/_blob/678ae900cc9b43f54e885d651da405a0" alt="Рекламный креатив курса ҰБТ по математике">
+    <img class="s45" src="/_blob/72884a26308c1b2d67bb0dd092b25c7d" alt="Креатив розыгрыша iPhone 17 и Dyson">
+    <img class="s916" src="/_blob/3eb512cbe672e766b4cba64318051133" alt="Вертикальный рекламный макет">
+    <img class="s11" src="/_blob/a222275204b90ff5d63f9b7ddcacae47" alt="Инфографика для умных часов">
+    <img class="s45" src="/_blob/a251a1162ae42664c10d091635c318b5" alt="Пост о стажировке врачей в VCU">
+    <img class="s169" src="/_blob/9d73bbf9012492ddf53893d4f42272c1" alt="Широкий рекламный макет">
+    <img class="s916" src="/_blob/aaee83e3cced7be19a103bffd9465a53" alt="" aria-hidden="true">
+    <img class="s45" src="/_blob/678ae900cc9b43f54e885d651da405a0" alt="" aria-hidden="true">
+    <img class="s45" src="/_blob/72884a26308c1b2d67bb0dd092b25c7d" alt="" aria-hidden="true">
+    <img class="s916" src="/_blob/3eb512cbe672e766b4cba64318051133" alt="" aria-hidden="true">
+    <img class="s11" src="/_blob/a222275204b90ff5d63f9b7ddcacae47" alt="" aria-hidden="true">
+    <img class="s45" src="/_blob/a251a1162ae42664c10d091635c318b5" alt="" aria-hidden="true">
+    <img class="s169" src="/_blob/9d73bbf9012492ddf53893d4f42272c1" alt="" aria-hidden="true">
+  </div>
+</section>
+
+<section class="wrap about" id="about">
+  <div class="about-row">
+    <p class="eyebrow">Обо мне</p>
+    <p class="display about-text">Помогаю бизнесу выглядеть убедительно в соцсетях — чтобы клиент понял предложение <span class="about-last"><span class="lime">с первого взгляда</span> и захотел написать.</span></p>
+  </div>
+  <div class="stats">
+    <div class="stat"><p class="display stat-num">2 года</p><p class="stat-label">в графическом дизайне — с 2024</p></div>
+    <div class="stat"><p class="display stat-num">24 ч</p><p class="stat-label">отвечаю на заявки в течение дня</p></div>
+  </div>
+</section>
+
+<section class="wrap services" id="services">
+  <div class="head">
+    <div>
+      <p class="eyebrow">Услуги</p>
+      <h2 class="display title">Что я делаю</h2>
+    </div>
+    <p class="head-text">Беру задачу целиком: от идеи и структуры до готовых макетов под все форматы.</p>
+  </div>
+  <div class="cards">
+    <article class="card service card-lime"><p class="card-num">01</p><div><h3>SMM-дизайн</h3><p class="card-text">Карусели, посты и сторис в едином стиле бренда.</p></div></article>
+    <article class="card service"><p class="card-num">02</p><div><h3>Рекламные креативы</h3><p class="card-text">Баннеры для таргета, которые считываются за секунду.</p></div></article>
+    <article class="card service"><p class="card-num">03</p><div><h3>Инфографика</h3><p class="card-text">Карточки товаров для Kaspi, Wildberries и Ozon.</p></div></article>
+    <article class="card service"><p class="card-num">04</p><div><h3>Презентации и печать</h3><p class="card-text">Презентации, чек-листы, листовки и наружная реклама.</p></div></article>
+  </div>
+</section>
+
+<section class="wrap cases" id="cases">
+  <div class="head">
+    <div>
+      <p class="eyebrow">Кейсы</p>
+      <h2 class="display title">Избранные работы</h2>
+    </div>
+  </div>
+
+  <article class="case">
+    <div class="case-top">
+      <p class="case-kind">01 / Образование</p>
+      <ul class="tags"><li>SMM</li><li>Креативы</li></ul>
+    </div>
+    <h3 class="display case-title">Sigma.Matem</h3>
+    <div class="brief">
+      <div><h3>ЗАДАЧА</h3><p>Создавать визуальный контент для продвижения курсов подготовки к ҰБТ по математике.</p></div>
+      <div><h3>РЕШЕНИЕ</h3><p>2 года разрабатывал дизайн всех графических публикаций Instagram: каруселей и рекламных креативов в едином стиле.</p></div>
+      <div><h3>РЕЗУЛЬТАТ</h3><p>Сформирован узнаваемый стиль публикаций. За время сотрудничества аккаунт вырос до 12 000 подписчиков.</p></div>
+    </div>
+    <p class="caption"><span>01</span>Карусель-посты</p>
+    <div class="grid bento">
+      <div class="work">sigma-01.jpg</div>
+      <div class="bento-sm">
+        <div class="work">sigma-02.jpg</div>
+        <div class="work">sigma-03.jpg</div>
+        <div class="work">sigma-04.jpg</div>
+        <div class="work">sigma-05.jpg</div>
+      </div>
+    </div>
+    <p class="caption"><span>02</span>Рекламные креативы</p>
+    <div class="grid g4">
+      <div class="work r916">sigma-06.jpg</div>
+      <div class="work r916">sigma-07.jpg</div>
+      <div class="work r916">sigma-08.jpg</div>
+      <div class="work r916">sigma-09.jpg</div>
+    </div>
+    <div class="work r-wide">sigma-10.jpg</div>
+  </article>
+
+  <article class="case">
+    <div class="case-top">
+      <p class="case-kind">02 / Туризм</p>
+      <ul class="tags"><li>Таргет</li><li>Баннеры</li><li>SMM</li></ul>
+    </div>
+    <h3 class="display case-title">IQRO Travel</h3>
+    <div class="brief">
+      <div><h3>ЗАДАЧА</h3><p>Продавать туры на хадж и умру через соцсети и таргетированную рекламу.</p></div>
+      <div><h3>РЕШЕНИЕ</h3><p>Серия креативов, где цена, даты, отели и маршрут считываются за 3 секунды.</p></div>
+      <div><h3>РЕЗУЛЬТАТ</h3><p>Единый узнаваемый стиль для всех пакетов туров.</p></div>
+    </div>
+    <p class="caption"><span>01</span>Рекламные креативы 4:5</p>
+    <div class="grid g3">
+      <div class="work r45">iqro-01.jpg</div>
+      <div class="work r45">iqro-02.jpg</div>
+      <div class="work r45">iqro-03.jpg</div>
+    </div>
+    <p class="caption"><span>02</span>Сторис 9:16</p>
+    <div class="grid g4">
+      <div class="work r916">iqro-04.jpg</div>
+      <div class="work r916">iqro-05.jpg</div>
+      <div class="work r916">iqro-06.jpg</div>
+      <div class="work r916">iqro-07.jpg</div>
+    </div>
+  </article>
+
+  <article class="case">
+    <div class="case-top">
+      <p class="case-kind">03 / Маркетплейсы</p>
+      <ul class="tags"><li>Инфографика</li><li>Карточки товаров</li><li>E-commerce</li></ul>
+    </div>
+    <h3 class="display case-title">Infographics</h3>
+    <div class="brief">
+      <div><h3>ЗАДАЧА</h3><p>Создать карточки товаров, которые сразу показывают главные преимущества техники.</p></div>
+      <div><h3>РЕШЕНИЕ</h3><p>Серии из трёх карточек: обложка с ключевыми характеристиками, польза для покупателя и детали.</p></div>
+      <div><h3>РЕЗУЛЬТАТ</h3><p>Единая подача внутри каждой серии: товар, цифры и выгоды считываются с первого взгляда.</p></div>
+    </div>
+    <p class="caption"><span>01</span>Мясорубка</p>
+    <div class="grid g3">
+      <div class="work r11">info-01.jpg</div>
+      <div class="work r11">info-02.jpg</div>
+      <div class="work r11">info-03.jpg</div>
+    </div>
+    <p class="caption"><span>02</span>Аэрогриль</p>
+    <div class="grid g3">
+      <div class="work r11">info-04.jpg</div>
+      <div class="work r11">info-05.jpg</div>
+      <div class="work r11">info-06.jpg</div>
+    </div>
+    <p class="caption"><span>03</span>Пароочиститель</p>
+    <div class="grid g3">
+      <div class="work r11">info-07.jpg</div>
+      <div class="work r11">info-08.jpg</div>
+      <div class="work r11">info-09.jpg</div>
+    </div>
+  </article>
+
+  <div class="others">
+    <div class="head others-head">
+      <h2 class="display title">Другие работы</h2>
+      <p class="head-text">Обложки, баннеры и рекламные макеты для разных брендов.</p>
+    </div>
+    <div class="grid g4">
+      <div class="work r916">other-01.jpg</div>
+      <div class="work r916">other-02.jpg</div>
+      <div class="work r916">other-03.jpg</div>
+      <div class="work r916">other-04.jpg</div>
+    </div>
+    <div class="work r-banner">other-05.jpg</div>
+    <div class="grid g2">
+      <div class="work r169">other-06.jpg</div>
+      <div class="work r169">other-07.jpg</div>
+    </div>
+    <div class="grid g4">
+      <div class="work r916">other-08.jpg</div>
+      <div class="work r916">other-09.jpg</div>
+      <div class="work r916">other-10.jpg</div>
+      <div class="work r916">other-11.jpg</div>
+    </div>
+    <div class="grid g3">
+      <div class="work r-tall">other-12.jpg</div>
+      <div class="work r-tall">other-13.jpg</div>
+      <div class="work r-tall">other-14.jpg</div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap process" id="process">
+  <div class="head">
+    <div>
+      <p class="eyebrow">Процесс</p>
+      <h2 class="display title">Как я работаю</h2>
+    </div>
+  </div>
+  <div class="cards">
+    <article class="card step"><p class="step-num">01</p><div><h3>Бриф</h3><p class="card-text">Обсуждаем задачу, пожелания, детали проекта и сроки.</p></div></article>
+    <article class="card step"><p class="step-num">02</p><div><h3>Концепция</h3><p class="card-text">Подбираю визуальное направление и подходящие референсы.</p></div></article>
+    <article class="card step"><p class="step-num">03</p><div><h3>Дизайн</h3><p class="card-text">Разрабатываю дизайны с учётом всех требований и пожеланий.</p></div></article>
+    <article class="card step"><p class="step-num">04</p><div><h3>Сдача</h3><p class="card-text">Вношу необходимые правки и сдаю готовый дизайн в срок.</p></div></article>
+  </div>
+</section>
+
+<section class="wrap contact" id="contact">
+  <div class="cta">
+    <p class="eyebrow">Контакты</p>
+    <h2 class="display">Есть проект? Давайте обсудим</h2>
+    <div class="cta-row">
+      <p class="cta-text"><b>Напишите</b> — отвечу в течение дня и предложу формат работы.</p>
+      <a class="btn btn-dark" href="https://t.me/nurdqulet">Написать в Telegram ↗</a>
+    </div>
+    <div class="cta-links">
+      <div><span class="cta-label">Telegram</span><a href="https://t.me/nurdqulet">@nurdqulet</a></div>
+      <div><span class="cta-label">WhatsApp</span><a href="https://wa.me/77714682184">+7 771 468 21 84</a></div>
+      <div><span class="cta-label">Почта</span><a href="mailto:zhaksylyk.nurdaulet3@gmail.com">zhaksylyk.nurdaulet3@gmail.com</a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap footer">
+  <p>© 2026 Нурдаулет</p>
+  <p>Алматы, Казахстан</p>
+  <a href="#top" onClick="{{ go }}">Наверх ↑</a>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":8000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      go: (e) => {
+        const target = document.getElementById(e.currentTarget.getAttribute('href').slice(1));
+        if (!target) return;
+        e.preventDefault();
+        const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'start' });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
