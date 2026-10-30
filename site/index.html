@@ -142,7 +142,7 @@ h1{font-size:clamp(36px,6.9vw,132px);line-height:1.02;letter-spacing:-.05em}
 .cta-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 48px;margin-top:clamp(28px,2.92vw,56px)}
 .cta-row p{flex:0 1 435px;font-size:var(--t28);line-height:1.4}
 .cta-row b{font-weight:600}
-.cta-links{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px 48px;margin-top:clamp(28px,2.92vw,56px);padding-top:clamp(28px,2.92vw,56px);border-top:1px solid rgba(255,255,255,.25)}
+.cta-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 48px;margin-top:clamp(28px,2.92vw,56px);padding-top:clamp(28px,2.92vw,56px);border-top:1px solid rgba(255,255,255,.25)}
 .cta-links span{display:block;font-size:var(--t20);color:#fff}
 .cta-links a{display:inline-flex;align-items:center;min-height:44px;margin-top:2px;font-family:Unbounded,system-ui,sans-serif;font-weight:500;font-size:clamp(14px,1.56vw,30px);overflow-wrap:anywhere}
 .cta-links a:hover{text-decoration:underline}
@@ -311,7 +311,7 @@ h1{font-size:clamp(36px,6.9vw,132px);line-height:1.02;letter-spacing:-.05em}
 @media (max-width:720px){
   .links{order:3;width:100%}
   .cards,.stats,.bento,.g3,.g2{grid-template-columns:1fr}
-  .cta-links{flex-direction:column}
+  .cta-links{grid-template-columns:1fr}
   .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
   .bento > .work{height:auto;aspect-ratio:4/5}
   .r-tall{aspect-ratio:544/1224}
@@ -562,7 +562,6 @@ h1{font-size:clamp(36px,6.9vw,132px);line-height:1.02;letter-spacing:-.05em}
     <div class="cta-links">
       <div><span>Telegram</span><a href="https://t.me/nurdqulet" target="_blank" rel="noopener">@nurdqulet</a></div>
       <div><span>WhatsApp</span><a href="https://wa.me/77714682184" target="_blank" rel="noopener">+7 771 468 21 84</a></div>
-      <div><span>Почта</span><a href="mailto:zhaksylyk.nurdaulet3@gmail.com">zhaksylyk.nurdaulet3@gmail.com</a></div>
     </div>
   </div>
 </section>

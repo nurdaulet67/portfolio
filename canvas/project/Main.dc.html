@@ -99,7 +99,7 @@ h1{font-size:clamp(36px,6.9vw,132px);line-height:1.02;letter-spacing:-.05em}
 .cta-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 48px;margin-top:clamp(28px,2.92vw,56px)}
 .cta-text{flex:0 1 435px;font-size:var(--t28);line-height:1.4}
 .cta-text b{font-weight:600}
-.cta-links{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px 48px;margin-top:clamp(28px,2.92vw,56px);padding-top:clamp(28px,2.92vw,56px);border-top:1px solid rgba(255,255,255,.25)}
+.cta-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 48px;margin-top:clamp(28px,2.92vw,56px);padding-top:clamp(28px,2.92vw,56px);border-top:1px solid rgba(255,255,255,.25)}
 .cta-label{display:block;font-size:var(--t20);color:#fff}
 .cta-links a{display:inline-flex;align-items:center;min-height:44px;margin-top:2px;font-family:Unbounded,system-ui,sans-serif;font-weight:500;font-size:clamp(14px,1.56vw,30px);overflow-wrap:anywhere}
 .footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 32px;padding-block:clamp(16px,1.56vw,30px) clamp(24px,2.5vw,48px);font-size:var(--t20);color:var(--ink-70)}
@@ -233,7 +233,7 @@ html,body,.page{scroll-behavior:auto}
 .lime-flow>span{color:var(--lime-text);background:none}
 }
 @media (max-width:1100px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.about-row,.brief{grid-template-columns:1fr}.about-br{display:none}}
-@media (max-width:720px){.links{order:3;width:100%}.cards,.stats,.bento,.g3,.g2{grid-template-columns:1fr}.cta-links{flex-direction:column}.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.bento>.work{aspect-ratio:4/5}.btn{white-space:normal;text-align:center}.hero-btns,.hero-btns .btn,.cta-row .btn{width:100%}}
+@media (max-width:720px){.links{order:3;width:100%}.cards,.stats,.bento,.g3,.g2{grid-template-columns:1fr}.cta-links{grid-template-columns:1fr}.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.bento>.work{aspect-ratio:4/5}.btn{white-space:normal;text-align:center}.hero-btns,.hero-btns .btn,.cta-row .btn{width:100%}}
 </style>
 </helmet>
 <div class="page" id="top">
@@ -467,7 +467,6 @@ html,body,.page{scroll-behavior:auto}
     <div class="cta-links">
       <div><span class="cta-label">Telegram</span><a href="https://t.me/nurdqulet">@nurdqulet</a></div>
       <div><span class="cta-label">WhatsApp</span><a href="https://wa.me/77714682184">+7 771 468 21 84</a></div>
-      <div><span class="cta-label">Почта</span><a href="mailto:zhaksylyk.nurdaulet3@gmail.com">zhaksylyk.nurdaulet3@gmail.com</a></div>
     </div>
   </div>
 </section>
