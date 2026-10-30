@@ -16,7 +16,7 @@ body{margin:0;background:var(--bg)}
 h1,h2,h3,p,figure{margin:0}
 a{color:inherit;text-decoration:none}
 a:hover{color:inherit}
-.page{background:var(--bg);color:var(--ink);font-family:Onest,system-ui,sans-serif;overflow-x:clip}
+.page{background:var(--bg);color:var(--ink);font-family:Onest,system-ui,sans-serif;overflow-x:clip;position:relative;z-index:0}
 .wrap{max-width:1920px;margin-inline:auto;padding-inline:var(--gutter)}
 .display{font-family:Unbounded,system-ui,sans-serif;font-weight:500}
 .lime{color:var(--lime-text)}
@@ -33,7 +33,7 @@ a:hover{color:inherit}
 .status{display:inline-flex;align-items:center;gap:12px;padding:12px 22px 12px 20px;border-radius:100px;background:var(--card);font-size:var(--t20);font-weight:500}
 .status i{display:block;flex:none;width:10px;height:10px;border-radius:50%;background:var(--lime-text)}
 h1{font-size:clamp(36px,6.9vw,132px);line-height:1.02;letter-spacing:-.05em}
-.h1-line{display:block}
+.h1-line{display:flex;flex-wrap:wrap;column-gap:.26em}
 .hero-bottom{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px 48px;width:100%}
 .hero-text{flex:0 1 694px;font-size:var(--t28);line-height:1.4;color:var(--ink-70)}
 .hero-text b{font-weight:600;color:rgba(244,242,236,.85)}
@@ -50,9 +50,8 @@ h1{font-size:clamp(36px,6.9vw,132px);line-height:1.02;letter-spacing:-.05em}
 .about-row{display:grid;grid-template-columns:minmax(0,500fr) minmax(0,1180fr);gap:24px 0}
 .about-row .eyebrow{align-self:start}
 .about-text{font-size:clamp(24px,2.6vw,50px);line-height:1.3;letter-spacing:-.03em}
-.about-last{display:block}
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap);margin-top:clamp(40px,5vw,96px)}
-.stat{border-top:1px solid var(--ink-12);padding-top:clamp(20px,1.93vw,37px)}
+.stat{position:relative;padding-top:clamp(20px,1.93vw,37px)}
 .stat-num{font-size:clamp(44px,5.42vw,104px);line-height:1.24;letter-spacing:-.04em}
 .stat-label{margin-top:20px;font-size:var(--t24);line-height:1.4;color:var(--ink-70)}
 .head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 48px}
@@ -106,41 +105,146 @@ h1{font-size:clamp(36px,6.9vw,132px);line-height:1.02;letter-spacing:-.05em}
 .footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 32px;padding-block:clamp(16px,1.56vw,30px) clamp(24px,2.5vw,48px);font-size:var(--t20);color:var(--ink-70)}
 .footer a{display:inline-flex;align-items:center;min-height:44px}
 html,body,.page{scroll-behavior:smooth}
-:root{--ease:cubic-bezier(.22,1,.36,1);--glow:0 0 0 1.5px rgba(79,139,255,.9),0 0 28px rgba(37,99,255,.45)}
-.btn{transition:background-color .45s var(--ease),border-color .45s var(--ease),color .45s var(--ease),transform .45s var(--ease)}
+:root{--ease:cubic-bezier(.22,1,.36,1);--cell:clamp(48px,4.17vw,80px);--line:rgba(244,242,236,.0225);--glow:0 0 0 1.5px rgba(79,139,255,.9),0 0 32px rgba(37,99,255,.5)}
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.bg-grid{position:absolute;inset:0;background-image:linear-gradient(to right,var(--line) 1px,transparent 1px),linear-gradient(to bottom,var(--line) 1px,transparent 1px);background-size:var(--cell) var(--cell)}
+.bg-blob{position:absolute;width:62vmax;height:62vmax;border-radius:50%;background:radial-gradient(closest-side,rgba(37,99,255,.22),transparent);will-change:transform}
+.b1{top:-26vmax;left:-14vmax;animation:drift1 24s ease-in-out infinite alternate}
+.b2{top:18vh;right:-24vmax;background:radial-gradient(closest-side,rgba(92,84,255,.17),transparent);animation:drift2 30s ease-in-out infinite alternate}
+.b3{bottom:-34vmax;left:18vw;background:radial-gradient(closest-side,rgba(40,140,255,.15),transparent);animation:drift3 36s ease-in-out infinite alternate}
+@keyframes drift1{to{transform:translate(16vw,14vh) scale(1.12)}}
+@keyframes drift2{to{transform:translate(-18vw,-12vh) scale(.92)}}
+@keyframes drift3{to{transform:translate(14vw,-16vh) scale(1.15)}}
+.progress{position:fixed;inset:0 0 auto;z-index:10;height:3px;display:none;transform-origin:0 50%;background:linear-gradient(90deg,var(--lime),#8fb6ff)}
+.w{display:inline-block;overflow:hidden;padding:0 .08em .16em 0;margin:0 -.08em -.16em 0}
+.w>span{display:inline-block;animation:wordUp 1.15s var(--ease) both}
+.w:nth-child(2)>span{animation-delay:.09s}
+.h1-line:nth-child(2) .w:nth-child(1)>span{animation-delay:.2s}
+.h1-line:nth-child(2) .w:nth-child(2)>span{animation-delay:.3s}
+@keyframes wordUp{from{transform:translateY(112%) rotate(5deg)}to{transform:none}}
+.lime-flow>span{color:transparent;background:linear-gradient(100deg,#4f8bff 20%,#b4cdff 42%,#4f8bff 64%) 0 0/250% 100%;-webkit-background-clip:text;background-clip:text;animation:wordUp 1.15s var(--ease) .3s both,flow 7s ease-in-out 1.4s infinite}
+@keyframes flow{50%{background-position:100% 0}}
+.status,.card{background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.035));-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.11),inset 0 1px 0 rgba(255,255,255,.16),0 18px 44px rgba(0,0,0,.28)}
+.status img,.status i,.eyebrow::before{border-radius:50%;animation:ping 2.6s ease-out infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(79,139,255,.65)}70%,100%{box-shadow:0 0 0 9px rgba(79,139,255,0)}}
+.cta .eyebrow::before{animation-name:pingWhite}
+@keyframes pingWhite{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}70%,100%{box-shadow:0 0 0 9px rgba(255,255,255,0)}}
+.links a{position:relative}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:9px;height:1.5px;background:var(--lime-text);transform:scaleX(0);transform-origin:100% 50%;transition:transform .5s var(--ease)}
+.links a,.footer a{transition:color .3s var(--ease)}
+.links a:hover,.footer a:hover{color:var(--ink)}
+.cta-links a:hover{text-decoration:underline}
+.footer a{gap:.35em}
+.arr{display:inline-block;transition:translate .45s var(--ease)}
+.btn{position:relative;overflow:hidden;isolation:isolate;gap:.35em;transition:background-color .45s var(--ease),border-color .45s var(--ease),color .45s var(--ease),transform .45s var(--ease),translate .35s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.4) 50%,transparent 70%);transform:translateX(-110%);transition:transform .9s var(--ease)}
 .btn:active{transform:scale(.97)}
 .btn-lime:hover{background:#fff;color:#0e0e0f}
 .btn-line:hover{border-color:var(--ink);background:var(--ink);color:var(--bg)}
 .btn-dark:hover{background:#2a2a2d;color:var(--ink)}
-.work,.card,.status,.strip-track img{position:relative;transition:box-shadow .5s var(--ease),transform .5s var(--ease)}
-.tags li{transition:border-color .5s var(--ease),box-shadow .5s var(--ease),color .5s var(--ease)}
-.links a,.footer a{transition:color .3s var(--ease)}
-.links a:hover,.footer a:hover{color:var(--ink)}
-.cta-links a:hover{text-decoration:underline}
+.btn-lime{animation:btnPulse 3.2s ease-in-out infinite}
+.btn-lime:hover{animation-play-state:paused}
+@keyframes btnPulse{50%{box-shadow:0 0 34px rgba(37,99,255,.65)}}
+.card,.work{--ty:0px;transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty))}
+.card,.work,.status,.strip-track img{position:relative;transition:box-shadow .5s var(--ease),transform .4s var(--ease)}
+.card>*{position:relative;z-index:1}
+.card::before,.card::after{content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;pointer-events:none;transition:opacity .5s var(--ease)}
+.card::before{background:radial-gradient(340px circle at var(--x,50%) var(--y,50%),rgba(79,139,255,.2),transparent 72%)}
+.card::after{padding:1.5px;background:radial-gradient(260px circle at var(--x,50%) var(--y,50%),#9dbfff,transparent 75%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.card-lime{background:linear-gradient(135deg,#2563ff,#1c50e6 55%,#2563ff) 0 0/220% 220%;-webkit-backdrop-filter:none;backdrop-filter:none;animation:cardFlow 9s ease-in-out infinite}
+.card-lime::before{background:radial-gradient(340px circle at var(--x,50%) var(--y,50%),rgba(255,255,255,.16),transparent 72%)}
+.card-lime::after{background:radial-gradient(260px circle at var(--x,50%) var(--y,50%),#fff,transparent 75%)}
+@keyframes cardFlow{50%{background-position:100% 100%}}
+.card h3,.card-num,.step-num,.card p:last-child{transition:translate .55s var(--ease),color .4s var(--ease),text-shadow .5s var(--ease)}
+.tags li{transition:border-color .5s var(--ease),box-shadow .5s var(--ease),color .5s var(--ease),translate .4s var(--ease)}
+.work::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(115deg,transparent 25%,rgba(255,255,255,.13) 50%,transparent 75%);opacity:0;transform:translateX(-100%);transition:transform 2.2s cubic-bezier(.3,0,.25,1),opacity .9s ease}
+.work{overflow:hidden}
+.strip{-webkit-mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent)}
+.stat::before{content:"";position:absolute;inset:0 0 auto;height:1px;background:linear-gradient(90deg,var(--lime-text),var(--ink-12) 45%);transform-origin:0 50%}
+.cta{position:relative;overflow:hidden;isolation:isolate;box-shadow:0 0 110px rgba(37,99,255,.28)}
+.cta::before{content:"";position:absolute;z-index:-1;width:70%;aspect-ratio:1;top:-40%;right:-12%;border-radius:50%;background:radial-gradient(closest-side,rgba(10,40,170,.7),transparent);animation:drift2 18s ease-in-out infinite alternate}
 @media (hover:hover){
+.links a:hover::after{transform:scaleX(1);transform-origin:0 50%}
+a:hover .arr-up{translate:0 -5px}
+a:hover .arr{translate:3px -3px}
+.btn:hover::before{transform:translateX(110%)}
 .card:hover,.status:hover{z-index:1;box-shadow:var(--glow)}
 .work:hover,.strip-track img:hover{z-index:1;box-shadow:0 0 0 1px rgba(255,255,255,.7),0 0 18px rgba(255,255,255,.1)}
-.work:hover,.card:hover{transform:translateY(-4px)}
-.tags li:hover{border-color:var(--lime-text);color:var(--ink);box-shadow:0 0 16px rgba(37,99,255,.4)}
+.work:hover,.card:hover{--ty:-6px}
+.work:hover::before{opacity:1;transform:translateX(100%)}
+.card:hover::before,.card:hover::after{opacity:1}
+.card:hover h3{translate:0 -4px}
+.card:hover .card-num{translate:6px 0;color:var(--lime-text)}
+.card-lime:hover .card-num{color:#fff}
+.card:hover p:last-child{color:var(--ink)}
+.card-lime:hover p:last-child{color:#fff}
+.card:hover .step-num{translate:0 -4px;text-shadow:0 0 26px rgba(79,139,255,.75)}
+.tags li:hover{translate:0 -2px;border-color:var(--lime-text);color:var(--ink);box-shadow:0 0 16px rgba(37,99,255,.45)}
 }
 @keyframes load{from{opacity:0;translate:0 28px}to{opacity:1;translate:0 0}}
-.nav,.hero>*,.strip{animation:load 1s var(--ease) both}
-.hero>:nth-child(2){animation-delay:.1s}
-.hero>:nth-child(3){animation-delay:.2s}
-.strip{animation-delay:.3s}
-@keyframes rise{from{opacity:0;translate:0 44px}to{opacity:1;translate:0 0}}
+.nav,.hero>:not(h1),.strip{animation:load 1s var(--ease) both}
+.hero-bottom{animation-delay:.45s}
+.strip{animation-delay:.6s}
+@keyframes rise{from{opacity:0;translate:0 48px}to{opacity:1;translate:0 0}}
+@keyframes wipe{from{clip-path:inset(-10% 100% -20% 0)}to{clip-path:inset(-10% -5% -20% 0)}}
+@keyframes slideIn{from{opacity:0;translate:7vw 0}to{opacity:1;translate:0 0}}
+@keyframes pop{from{opacity:0;scale:.7}to{opacity:1;scale:1}}
+@keyframes draw{from{scale:0 1}to{scale:1 1}}
+@keyframes wordLit{from{opacity:.16}to{opacity:1}}
+@keyframes prog{from{scale:0 1}to{scale:1 1}}
 @supports (animation-timeline:view()){
-.about-row,.stat,.head,.card,.case-top,.case-title,.brief>div,.caption,.work,.cta{animation:rise linear both;animation-timeline:view();animation-range:entry 0px entry 220px}
+.progress{display:block;animation:prog linear both;animation-timeline:scroll(root)}
+.eyebrow,.stat,.head-text,.card,.case-top,.brief>div,.caption,.work,.cta,.cta-row,.cta-links{animation:rise linear both;animation-timeline:view();animation-range:entry 0px entry 220px}
+.title{animation:wipe linear both;animation-timeline:view();animation-range:entry 0px entry 280px}
+.case-title,.stat-num{animation:slideIn linear both;animation-timeline:view();animation-range:entry 0px cover 34%}
+.tags li{animation:pop linear both;animation-timeline:view();animation-range:entry 20px entry 170px}
+.tags li:nth-child(2){animation-range:entry 50px entry 200px}
+.tags li:nth-child(3){animation-range:entry 80px entry 230px}
+.stat::before{animation:draw linear both;animation-timeline:view();animation-range:entry 0px cover 42%}
+.cards .card:nth-child(2),.g3>.work:nth-child(2),.g4>.work:nth-child(2),.g2>.work:nth-child(2),.bento-sm>.work:nth-child(2),.brief>div:nth-child(2),.stat:nth-child(2){animation-range:entry 40px entry 260px}
+.cards .card:nth-child(3),.g3>.work:nth-child(3),.g4>.work:nth-child(3),.bento-sm>.work:nth-child(3),.brief>div:nth-child(3){animation-range:entry 80px entry 300px}
+.cards .card:nth-child(4),.g4>.work:nth-child(4),.bento-sm>.work:nth-child(4){animation-range:entry 120px entry 340px}
+.card-lime{animation:rise linear both,cardFlow 9s ease-in-out infinite;animation-timeline:view(),auto;animation-range:entry 0px entry 220px,normal}
+.cta-row{animation-range:entry 40px entry 260px}
+.cta-links{animation-range:entry 0px entry 180px}
+.about-text{view-timeline:--about block}
+.aw{animation:wordLit linear both;animation-timeline:--about}
+.aw:nth-child(1){animation-range:cover 8% cover 16%}
+.aw:nth-child(2){animation-range:cover 10% cover 18%}
+.aw:nth-child(3){animation-range:cover 12% cover 20%}
+.aw:nth-child(4){animation-range:cover 14% cover 22%}
+.aw:nth-child(5){animation-range:cover 16% cover 24%}
+.aw:nth-child(6){animation-range:cover 18% cover 26%}
+.aw:nth-child(7){animation-range:cover 20% cover 28%}
+.aw:nth-child(8){animation-range:cover 22% cover 30%}
+.aw:nth-child(9){animation-range:cover 24% cover 32%}
+.aw:nth-child(10){animation-range:cover 26% cover 34%}
+.aw:nth-child(11){animation-range:cover 28% cover 36%}
+.aw:nth-child(13){animation-range:cover 30% cover 38%}
+.aw:nth-child(14){animation-range:cover 32% cover 40%}
+.aw:nth-child(15){animation-range:cover 34% cover 42%}
+.aw:nth-child(16){animation-range:cover 36% cover 44%}
+.aw:nth-child(17){animation-range:cover 38% cover 46%}
+.aw:nth-child(18){animation-range:cover 40% cover 48%}
 }
 @media (prefers-reduced-motion:reduce){
 html,body,.page{scroll-behavior:auto}
 *,*::before,*::after{animation:none!important;transition:none!important}
+.lime-flow>span{color:var(--lime-text);background:none}
 }
-@media (max-width:1100px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.about-row,.brief{grid-template-columns:1fr}.about-last{display:inline}}
+@media (max-width:1100px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.about-row,.brief{grid-template-columns:1fr}.about-br{display:none}}
 @media (max-width:720px){.links{order:3;width:100%}.cards,.stats,.bento,.g3,.g2{grid-template-columns:1fr}.cta-links{flex-direction:column}.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.bento>.work{aspect-ratio:4/5}.btn{white-space:normal;text-align:center}.hero-btns,.hero-btns .btn,.cta-row .btn{width:100%}}
 </style>
 </helmet>
 <div class="page" id="top">
+
+<div class="bg" aria-hidden="true">
+  <div class="bg-blob b1"></div>
+  <div class="bg-blob b2"></div>
+  <div class="bg-blob b3"></div>
+  <div class="bg-grid"></div>
+</div>
+<div class="progress" aria-hidden="true"></div>
 
 <header class="wrap nav">
   <a class="logo" href="#top" onClick="{{ go }}">Нурдаулет</a>
@@ -150,16 +254,16 @@ html,body,.page{scroll-behavior:auto}
     <a href="#cases" onClick="{{ go }}">Кейсы</a>
     <a href="#contact" onClick="{{ go }}">Контакты</a>
   </nav>
-  <a class="btn btn-line" href="#contact" onClick="{{ go }}">Связаться ↗</a>
+  <a class="btn btn-line" href="#contact" onClick="{{ go }}">Связаться <span class="arr">↗</span></a>
 </header>
 
 <section class="wrap hero">
   <p class="status"><i aria-hidden="true"></i>Открыт для новых проектов</p>
-  <h1 class="display"><span class="h1-line">Дизайн, который</span> <span class="h1-line">выделяет <span class="lime">ваш бренд</span></span></h1>
+  <h1 class="display"><span class="h1-line"><span class="w"><span>Дизайн,</span></span> <span class="w"><span>который</span></span></span> <span class="h1-line"><span class="w"><span>выделяет</span></span> <span class="w lime-flow"><span>ваш бренд</span></span></span></h1>
   <div class="hero-bottom">
     <p class="hero-text">Всем привет, я <b>Нурдаулет</b>, Графический Дизайнер. Делаю SMM-визуалы, рекламные креативы и инфографики для маркетплейсов e-commerce.</p>
     <div class="hero-btns">
-      <a class="btn btn-lime" href="#contact" onClick="{{ go }}">Обсудить проект ↗</a>
+      <a class="btn btn-lime" href="#contact" onClick="{{ go }}">Обсудить проект <span class="arr">↗</span></a>
       <a class="btn btn-line" href="#cases" onClick="{{ go }}">Смотреть кейсы</a>
     </div>
   </div>
@@ -187,7 +291,7 @@ html,body,.page{scroll-behavior:auto}
 <section class="wrap about" id="about">
   <div class="about-row">
     <p class="eyebrow">Обо мне</p>
-    <p class="display about-text">Помогаю бизнесу выглядеть убедительно в соцсетях — чтобы клиент понял предложение <span class="about-last"><span class="lime">с первого взгляда</span> и захотел написать.</span></p>
+    <p class="display about-text"><span class="aw">Помогаю </span><span class="aw">бизнесу </span><span class="aw">выглядеть </span><span class="aw">убедительно </span><span class="aw">в </span><span class="aw">соцсетях </span><span class="aw">— </span><span class="aw">чтобы </span><span class="aw">клиент </span><span class="aw">понял </span><span class="aw">предложение </span><br class="about-br"><span class="aw lime">с </span><span class="aw lime">первого </span><span class="aw lime">взгляда </span><span class="aw">и </span><span class="aw">захотел </span><span class="aw">написать.</span></p>
   </div>
   <div class="stats">
     <div class="stat"><p class="display stat-num">2 года</p><p class="stat-label">в графическом дизайне — с 2024</p></div>
@@ -358,7 +462,7 @@ html,body,.page{scroll-behavior:auto}
     <h2 class="display">Есть проект? Давайте обсудим</h2>
     <div class="cta-row">
       <p class="cta-text"><b>Напишите</b> — отвечу в течение дня и предложу формат работы.</p>
-      <a class="btn btn-dark" href="https://t.me/nurdqulet">Написать в Telegram ↗</a>
+      <a class="btn btn-dark" href="https://t.me/nurdqulet">Написать в Telegram <span class="arr">↗</span></a>
     </div>
     <div class="cta-links">
       <div><span class="cta-label">Telegram</span><a href="https://t.me/nurdqulet">@nurdqulet</a></div>
@@ -371,13 +475,48 @@ html,body,.page{scroll-behavior:auto}
 <footer class="wrap footer">
   <p>© 2026 Нурдаулет</p>
   <p>Алматы, Казахстан</p>
-  <a href="#top" onClick="{{ go }}">Наверх ↑</a>
+  <a href="#top" onClick="{{ go }}">Наверх <span class="arr arr-up">↑</span></a>
 </footer>
 
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":8000}}'>
 class Component extends DCLogic {
+  componentDidMount() {
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!fine || still) return;
+    this.motion = new AbortController();
+    const signal = this.motion.signal;
+
+    document.querySelectorAll('.card,.work').forEach((el) => {
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - r.left, y = e.clientY - r.top;
+        const max = Math.min(6, 1800 / r.width);
+        el.style.setProperty('--x', x + 'px');
+        el.style.setProperty('--y', y + 'px');
+        el.style.setProperty('--ry', ((x / r.width - .5) * max).toFixed(2) + 'deg');
+        el.style.setProperty('--rx', ((.5 - y / r.height) * max).toFixed(2) + 'deg');
+      }, { signal });
+      el.addEventListener('pointerleave', () => {
+        el.style.setProperty('--rx', '0deg');
+        el.style.setProperty('--ry', '0deg');
+      }, { signal });
+    });
+
+    document.querySelectorAll('.btn').forEach((el) => {
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        const dx = e.clientX - r.left - r.width / 2, dy = e.clientY - r.top - r.height / 2;
+        el.style.translate = (dx * .14).toFixed(1) + 'px ' + (dy * .22).toFixed(1) + 'px';
+      }, { signal });
+      el.addEventListener('pointerleave', () => { el.style.translate = ''; }, { signal });
+    });
+  }
+  componentWillUnmount() {
+    if (this.motion) this.motion.abort();
+  }
   renderVals() {
     return {
       go: (e) => {
