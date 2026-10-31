@@ -62,8 +62,8 @@ a:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
 .hero{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(28px,2.92vw,56px);padding-top:clamp(40px,5.2vw,100px);padding-bottom:clamp(40px,3.75vw,72px)}
 .status{display:inline-flex;align-items:center;gap:12px;padding:12px 22px 12px 20px;border-radius:100px;background:var(--card);font-size:var(--t20);font-weight:500}
 .status img{display:block;flex:none}
-h1{font-size:clamp(36px,6.9vw,132px);line-height:1.02;letter-spacing:-.05em}
-h1:lang(kk){font-size:clamp(24px,6.9vw,132px)} /* «ерекшелендіретін» длиннее русских слов и не влезает на узких экранах */
+h1{font-size:clamp(36px,min(5.4vw,11vh),100px);line-height:1.02;letter-spacing:-.05em}
+h1:lang(kk){font-size:clamp(24px,min(5vw,11vh),100px)} /* «ерекшелендіретін» длиннее русских слов и не влезает на узких экранах */
 .h1-line{display:flex;flex-wrap:wrap;column-gap:.26em}
 .hero-bottom{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px 48px;width:100%}
 .hero-text{flex:0 1 694px;font-size:var(--t28);line-height:1.4;color:var(--ink-70)}
@@ -340,7 +340,7 @@ h1:lang(kk){font-size:clamp(24px,6.9vw,132px)} /* «ерекшелендірет
   .r-tall{aspect-ratio:544/1224}
   .btn{white-space:normal;text-align:center}
   .hero-btns,.hero-btns .btn,.cta-row .btn{width:100%}
-  h1:lang(kk){font-size:clamp(24px,7.5vw,132px)}
+  h1:lang(kk){font-size:clamp(24px,7.5vw,40px)}
 }
 @media (max-width:480px){
   /* Логотип и переключатель в одну строку: кнопка дублирует пункт меню и кнопку на первом экране */
@@ -746,7 +746,7 @@ h1:lang(kk){font-size:clamp(24px,6.9vw,132px)} /* «ерекшелендірет
 
     // Заголовки разбиты на слова для анимации, порядок слов в казахском другой — заменяем целиком.
     var KK_HTML = {
-      'h1': '<span class="h1-line"><span class="w lime-flow"><span>Брендіңізді</span></span> <span class="w"><span>ерекшелендіретін</span></span></span> <span class="h1-line"><span class="w"><span>дизайн</span></span></span>',
+      'h1': '<span class="h1-line"><span class="w lime-flow"><span>Брендіңізді</span></span></span> <span class="h1-line"><span class="w"><span>ерекшелендіретін</span></span> <span class="w"><span>дизайн</span></span></span>',
       '.about-text': '<span class="aw">Бизнесіңізге </span><span class="aw">әлеуметтік </span><span class="aw">желілерде </span><span class="aw">сенімді </span><span class="aw">көрінуге </span><span class="aw">көмектесемін. </span><span class="aw">Клиенттер </span><span class="aw">ұсынысыңызды </span><span class="aw lime">бірден </span><span class="aw">түсініп, </span><span class="aw">сізге </span><span class="aw">хабарласқысы </span><span class="aw">келетіндей </span><span class="aw">дизайн </span><span class="aw">жасаймын.</span>'
     };
 
