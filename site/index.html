@@ -7,8 +7,12 @@
 <meta name="description" content="Графический дизайнер из Алматы: SMM-визуалы, рекламные креативы и инфографика для маркетплейсов.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&display=swap">
+<link rel="preload" href="fonts/Unbounded-KZ-500.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+/* Unbounded с добавленными казахскими буквами (лицензия OFL, см. fonts/OFL.txt) */
+@font-face{font-family:"Unbounded KZ";src:url(fonts/Unbounded-KZ-500.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Unbounded KZ";src:url(fonts/Unbounded-KZ-600.woff2) format("woff2");font-weight:600;font-display:swap}
 :root{
   --bg:#0e0e0f;--card:#18181a;--ink:#f4f2ec;--lime:#2563ff;--lime-text:#4f8bff;
   --ink-70:rgba(244,242,236,.7);--ink-25:rgba(244,242,236,.25);--ink-12:rgba(244,242,236,.12);
@@ -16,6 +20,7 @@
   --t18:clamp(12px,.94vw,18px);--t20:clamp(14px,1.04vw,20px);--t22:clamp(15px,1.15vw,22px);
   --t24:clamp(15px,1.25vw,24px);--t26:clamp(16px,1.35vw,26px);--t28:clamp(17px,1.46vw,28px);
   --gap:clamp(12px,1.25vw,24px);--radius:clamp(18px,1.46vw,28px);
+  --display:"Unbounded KZ",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;background:var(--bg)}
@@ -24,7 +29,7 @@ h1,h2,h3,p,figure{margin:0}
 a{color:inherit;text-decoration:none}
 a:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
 .wrap{max-width:1920px;margin-inline:auto;padding-inline:var(--gutter)}
-.display{font-family:Unbounded,system-ui,sans-serif;font-weight:500}
+.display{font-family:var(--display);font-weight:500}
 .lime{color:var(--lime-text)}
 .title{font-size:clamp(32px,4.17vw,80px);line-height:1.24;letter-spacing:-.04em}
 
@@ -39,16 +44,26 @@ a:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
 
 /* Шапка */
 .nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px;padding-block:clamp(16px,2.29vw,44px)}
-.logo{display:inline-flex;align-items:center;min-height:44px;font-family:Unbounded,system-ui,sans-serif;font-weight:600;font-size:clamp(18px,1.35vw,26px);letter-spacing:-.02em}
+.logo{display:inline-flex;align-items:center;min-height:44px;font-family:var(--display);font-weight:600;font-size:clamp(18px,1.35vw,26px);letter-spacing:-.02em}
 .links{display:flex;flex-wrap:wrap;gap:clamp(16px,2.5vw,48px);font-size:var(--t20);color:var(--ink-70)}
 .links a{display:inline-flex;align-items:center;min-height:44px;transition:color .2s}
 .links a:hover{color:var(--ink)}
+.nav-end{display:flex;align-items:center;gap:clamp(8px,.83vw,16px)}
+
+/* Переключатель языка */
+.lang{display:inline-flex;border:1.5px solid var(--ink-25);border-radius:100px}
+.lang button{min-width:44px;min-height:41px;padding:0 clamp(8px,.73vw,14px);border:0;border-radius:100px;background:none;color:var(--ink-70);font:500 var(--t18) Onest,system-ui,sans-serif;cursor:pointer;transition:background-color .3s var(--ease),color .3s var(--ease)}
+.lang button:hover{color:var(--ink)}
+.lang button[aria-pressed="true"]{background:var(--lime);color:#fff}
+.lang button:focus-visible{outline:2px solid var(--lime-text);outline-offset:2px}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.5s;animation-timing-function:ease}
 
 /* Первый экран */
 .hero{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(28px,2.92vw,56px);padding-top:clamp(40px,5.2vw,100px);padding-bottom:clamp(40px,3.75vw,72px)}
 .status{display:inline-flex;align-items:center;gap:12px;padding:12px 22px 12px 20px;border-radius:100px;background:var(--card);font-size:var(--t20);font-weight:500}
 .status img{display:block;flex:none}
 h1{font-size:clamp(36px,6.9vw,132px);line-height:1.02;letter-spacing:-.05em}
+h1:lang(kk){font-size:clamp(24px,6.9vw,132px)} /* «ерекшелендіретін» длиннее русских слов и не влезает на узких экранах */
 .h1-line{display:flex;flex-wrap:wrap;column-gap:.26em}
 .hero-bottom{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px 48px;width:100%}
 .hero-text{flex:0 1 694px;font-size:var(--t28);line-height:1.4;color:var(--ink-70)}
@@ -96,12 +111,12 @@ h1{font-size:clamp(36px,6.9vw,132px);line-height:1.02;letter-spacing:-.05em}
 .card{display:flex;flex-direction:column;justify-content:space-between;gap:48px;background:var(--card);border-radius:var(--radius);padding:clamp(24px,2.08vw,40px)}
 .service{min-height:clamp(240px,20.83vw,400px)}
 .card-num{font-size:var(--t22);color:var(--ink-70)}
-.card h3{font-family:Unbounded,system-ui,sans-serif;font-weight:500;font-size:clamp(20px,1.67vw,32px);line-height:1.2;letter-spacing:-.02em}
+.card h3{font-family:var(--display);font-weight:500;font-size:clamp(20px,1.67vw,32px);line-height:1.2;letter-spacing:-.02em}
 .card p:last-child{margin-top:16px;font-size:clamp(15px,1.12vw,22px);line-height:1.4;color:var(--ink-70)}
 .card-lime{background:var(--lime);color:#fff}
 .card-lime .card-num,.card-lime p:last-child{color:#fff}
 .step{justify-content:flex-start;gap:clamp(32px,2.92vw,56px);padding-bottom:clamp(24px,2.29vw,44px)}
-.step-num{font-family:Unbounded,system-ui,sans-serif;font-weight:500;font-size:clamp(36px,2.92vw,56px);line-height:1.24;color:var(--lime-text)}
+.step-num{font-family:var(--display);font-weight:500;font-size:clamp(36px,2.92vw,56px);line-height:1.24;color:var(--lime-text)}
 .step p:last-child{margin-top:14px}
 
 /* Кейсы */
@@ -139,12 +154,13 @@ h1{font-size:clamp(36px,6.9vw,132px);line-height:1.02;letter-spacing:-.05em}
 .cta .eyebrow{color:#fff}
 .cta .eyebrow::before{background:#fff}
 .cta h2{margin-top:clamp(28px,2.92vw,56px);font-size:clamp(34px,6.25vw,120px);line-height:1.09;letter-spacing:-.04em}
+.cta h2:lang(kk){font-size:clamp(30px,6.25vw,120px)} /* «талқылайық» не влезает на узких экранах */
 .cta-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 48px;margin-top:clamp(28px,2.92vw,56px)}
 .cta-row p{flex:0 1 435px;font-size:var(--t28);line-height:1.4}
 .cta-row b{font-weight:600}
 .cta-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 48px;margin-top:clamp(28px,2.92vw,56px);padding-top:clamp(28px,2.92vw,56px);border-top:1px solid rgba(255,255,255,.25)}
 .cta-links span{display:block;font-size:var(--t20);color:#fff}
-.cta-links a{display:inline-flex;align-items:center;min-height:44px;margin-top:2px;font-family:Unbounded,system-ui,sans-serif;font-weight:500;font-size:clamp(14px,1.56vw,30px);overflow-wrap:anywhere}
+.cta-links a{display:inline-flex;align-items:center;min-height:44px;margin-top:2px;font-family:var(--display);font-weight:500;font-size:clamp(14px,1.56vw,30px);overflow-wrap:anywhere}
 .cta-links a:hover{text-decoration:underline}
 .cta-links a:focus-visible{outline-color:#fff}
 
@@ -174,6 +190,7 @@ h1{font-size:clamp(36px,6.9vw,132px);line-height:1.02;letter-spacing:-.05em}
 .w:nth-child(2)>span{animation-delay:.09s}
 .h1-line:nth-child(2) .w:nth-child(1)>span{animation-delay:.2s}
 .h1-line:nth-child(2) .w:nth-child(2)>span{animation-delay:.3s}
+.h1-line:first-child .lime-flow>span{animation-delay:0s,1.4s}
 @keyframes wordUp{from{transform:translateY(112%) rotate(5deg)}to{transform:none}}
 .lime-flow>span{color:transparent;background:linear-gradient(100deg,#4f8bff 20%,#b4cdff 42%,#4f8bff 64%) 0 0/250% 100%;-webkit-background-clip:text;background-clip:text;animation:wordUp 1.15s var(--ease) .3s both,flow 7s ease-in-out 1.4s infinite}
 @keyframes flow{50%{background-position:100% 0}}
@@ -290,6 +307,7 @@ h1{font-size:clamp(36px,6.9vw,132px);line-height:1.02;letter-spacing:-.05em}
   .aw:nth-child(9){animation-range:cover 24% cover 32%}
   .aw:nth-child(10){animation-range:cover 26% cover 34%}
   .aw:nth-child(11){animation-range:cover 28% cover 36%}
+  .aw:nth-child(12){animation-range:cover 29% cover 37%}
   .aw:nth-child(13){animation-range:cover 30% cover 38%}
   .aw:nth-child(14){animation-range:cover 32% cover 40%}
   .aw:nth-child(15){animation-range:cover 34% cover 42%}
@@ -317,6 +335,11 @@ h1{font-size:clamp(36px,6.9vw,132px);line-height:1.02;letter-spacing:-.05em}
   .r-tall{aspect-ratio:544/1224}
   .btn{white-space:normal;text-align:center}
   .hero-btns,.hero-btns .btn,.cta-row .btn{width:100%}
+  h1:lang(kk){font-size:clamp(24px,7.5vw,132px)}
+}
+@media (max-width:480px){
+  /* Логотип и переключатель в одну строку: кнопка дублирует пункт меню и кнопку на первом экране */
+  .nav .btn{display:none}
 }
 </style>
 <script>
@@ -348,7 +371,13 @@ h1{font-size:clamp(36px,6.9vw,132px);line-height:1.02;letter-spacing:-.05em}
     <a href="#cases">Кейсы</a>
     <a href="#contact">Контакты</a>
   </nav>
-  <a class="btn btn-line" href="#contact">Связаться <span class="arr">↗</span></a>
+  <div class="nav-end">
+    <div class="lang" role="group" aria-label="Язык / Тіл">
+      <button type="button" data-lang="ru" aria-pressed="true">РУС</button>
+      <button type="button" data-lang="kk" aria-pressed="false">ҚАЗ</button>
+    </div>
+    <a class="btn btn-line" href="#contact">Связаться <span class="arr">↗</span></a>
+  </div>
 </header>
 
 <main>
@@ -603,6 +632,178 @@ h1{font-size:clamp(36px,6.9vw,132px);line-height:1.02;letter-spacing:-.05em}
         el.style.translate = (dx * .14).toFixed(1) + 'px ' + (dy * .22).toFixed(1) + 'px';
       });
       el.addEventListener('pointerleave', function () { el.style.translate = ''; });
+    });
+  })();
+</script>
+
+<script>
+  // Переключатель языка. Русский лежит в разметке, казахский — в словаре, где ключ это русский текст.
+  (function () {
+    var KK = {
+      // Шапка и первый экран
+      'Нурдаулет — графический дизайнер': 'Нурдаулет — графикалық дизайнер',
+      'Графический дизайнер из Алматы: SMM-визуалы, рекламные креативы и инфографика для маркетплейсов.': 'Алматыдағы графикалық дизайнер: SMM-визуалдар, жарнамалық креативтер және маркетплейстерге арналған инфографика.',
+      'Основное меню': 'Негізгі мәзір',
+      'Обо мне': 'Мен туралы',
+      'Услуги': 'Қызметтер',
+      'Кейсы': 'Кейстер',
+      'Контакты': 'Байланыс',
+      'Связаться': 'Байланысу',
+      'Открыт для новых проектов': 'Жаңа жобаларға ашықпын',
+      'Всем привет, я': 'Сәлем! Менің есімім',
+      ', Графический Дизайнер. Делаю SMM-визуалы, рекламные креативы и инфографики для маркетплейсов e-commerce.': ', графикалық дизайнермін. SMM-дизайн, жарнамалық креативтер және маркетплейстердегі тауарларға арналған инфографика жасаймын.',
+      'Обсудить проект': 'Жобаны талқылау',
+      'Смотреть кейсы': 'Кейстерді көру',
+
+      // Обо мне
+      '2 года': '2 жыл',
+      'в графическом дизайне — с 2024': 'графикалық дизайнда — 2024 жылдан бері',
+      '24 ч': '24 сағ',
+      'отвечаю на заявки в течение дня': 'өтінімдерге бір күн ішінде жауап беремін',
+
+      // Услуги
+      'Что я делаю': 'Не істеймін',
+      'Беру задачу целиком: от идеи и структуры до готовых макетов под все форматы.': 'Идея мен құрылымнан бастап, барлық қажетті форматқа бейімделген дайын макеттерге дейінгі жұмысты толық атқарамын.',
+      'Карусели, посты и сторис в едином стиле бренда.': 'Брендтің бірыңғай стиліндегі карусельдер, посттар мен сторис.',
+      'Рекламные креативы': 'Жарнамалық креативтер',
+      'Баннеры для таргета, которые считываются за секунду.': 'Бір қарағаннан түсінікті, таргетке арналған жарнамалық баннерлер.',
+      'Карточки товаров для Kaspi, Wildberries и Ozon.': 'Kaspi, Wildberries және Ozon маркетплейстеріне арналған тауар карточкалары.',
+      'Презентации и печать': 'Презентациялар мен баспа',
+      'Презентации, чек-листы, листовки и наружная реклама.': 'Презентациялар, чек-листтер, үнпарақтар және сыртқы жарнама.',
+
+      // Кейсы
+      'Избранные работы': 'Таңдаулы жұмыстар',
+      'ЗАДАЧА': 'МІНДЕТ',
+      'РЕШЕНИЕ': 'ШЕШІМ',
+      'РЕЗУЛЬТАТ': 'НӘТИЖЕ',
+      '01 / Образование': '01 / Білім беру',
+      'Креативы': 'Креативтер',
+      'Создавать визуальный контент для продвижения курсов подготовки к ҰБТ по математике.': 'Математика пәнінен ҰБТ-ға дайындық курстарын ілгерілетуге арналған визуалды контент әзірлеу.',
+      '2 года разрабатывал дизайн всех графических публикаций Instagram: каруселей и рекламных креативов в едином стиле.': '2 жыл бойы Instagram-дағы барлық графикалық жарияланымдардың дизайнын жасадым: бірыңғай стильдегі карусельдер мен жарнамалық креативтер.',
+      'Сформирован узнаваемый стиль публикаций. За время сотрудничества аккаунт вырос до 12 000 подписчиков.': 'Жарияланымдардың бірден танылатын бірегей стилі қалыптасты. Бірлесіп жұмыс істеген уақытта аккаунт 12 000 жазылушыға дейін өсті.',
+      'Карусель-посты': 'Карусель-посттар',
+      'Баннеры': 'Баннерлер',
+      'Продавать туры на хадж и умру через соцсети и таргетированную рекламу.': 'Әлеуметтік желілер мен таргеттелген жарнама арқылы қажылық пен умра турларының сатылымын арттыруға көмектесу.',
+      'Серия креативов, где цена, даты, отели и маршрут считываются за 3 секунды.': 'Бағасы, сапар күні, қонақүйі мен бағыты бірден түсінікті болатын жарнамалық креативтер топтамасы.',
+      'Единый узнаваемый стиль для всех пакетов туров.': 'Барлық тур пакеттеріне ортақ, оңай танылатын стиль.',
+      'Рекламные креативы 4:5': 'Жарнамалық креативтер 4:5',
+      '03 / Маркетплейсы': '03 / Маркетплейстер',
+      'Карточки товаров': 'Тауар карточкалары',
+      'Создать карточки товаров, которые сразу показывают главные преимущества техники.': 'Техниканың басты артықшылықтарын бірден көрсететін тауар карточкаларын жасау.',
+      'Серии из трёх карточек: обложка с ключевыми характеристиками, польза для покупателя и детали.': 'Әр өнімге арналған үш карточкадан тұратын топтама: негізгі сипаттамалары көрсетілген мұқаба, сатып алушыға беретін пайдасы және өнімнің ерекшеліктері.',
+      'Единая подача внутри каждой серии: товар, цифры и выгоды считываются с первого взгляда.': 'Әр топтамада ақпарат бірден оқылады: өнімнің өзі, негізгі көрсеткіштері мен артықшылықтары бірден көзге түсінікті.',
+      'Мясорубка': 'Ет тартқыш',
+      'Пароочиститель': 'Бу тазартқыш',
+      'Другие работы': 'Басқа жұмыстар',
+      'Обложки, баннеры и рекламные макеты для разных брендов.': 'Түрлі брендтерге арналған мұқабалар, баннерлер мен жарнамалық макеттер.',
+
+      // Процесс
+      'Как я работаю': 'Қалай жұмыс істеймін',
+      'Сдача': 'Тапсыру',
+      'Обсуждаем задачу, пожелания, детали проекта и сроки.': 'Жобаның мақсатын, талаптарын, ұсыныстарын және орындалу мерзімін талқылаймыз.',
+      'Подбираю визуальное направление и подходящие референсы.': 'Визуалды бағыт пен лайықты референстерді таңдаймын.',
+      'Разрабатываю дизайны с учётом всех требований и пожеланий.': 'Барлық талаптар мен тілектерді ескере отырып, дизайн жасаймын.',
+      'Вношу необходимые правки и сдаю готовый дизайн в срок.': 'Қажетті түзетулер енгізіп, дайын дизайнды уақытында тапсырамын.',
+
+      // Контакты и подвал
+      'Есть проект? Давайте обсудим': 'Жобаңыз бар ма? Бірге талқылайық',
+      'Напишите': 'Жазыңыз',
+      '— отвечу в течение дня и предложу формат работы.': '— бір күн ішінде жауап беріп, жұмыс форматын ұсынамын.',
+      'Написать в Telegram': 'Telegram-ға жазу',
+      'Алматы, Казахстан': 'Алматы, Қазақстан',
+      'Наверх': 'Жоғарыға',
+
+      // Подписи к картинкам
+      'Примеры работ': 'Жұмыс үлгілері',
+      'Сторис с туром на умру': 'Умра турымен сторис',
+      'Рекламный креатив курса ҰБТ по математике': 'Математикадан ҰБТ курсының жарнамалық креативі',
+      'Креатив розыгрыша iPhone 17 и Dyson': 'iPhone 17 және Dyson ұтыс ойынының креативі',
+      'Вертикальный рекламный макет': 'Тік жарнамалық макет',
+      'Инфографика для умных часов': 'Смарт-сағатқа арналған инфографика',
+      'Пост о стажировке врачей в VCU': 'VCU-дағы дәрігерлер тағылымдамасы туралы пост',
+      'Широкий рекламный макет': 'Кең жарнамалық макет',
+      'Sigma.Matem, рекламный креатив': 'Sigma.Matem, жарнамалық креатив',
+      'Sigma.Matem, широкий баннер': 'Sigma.Matem, кең баннер',
+      'IQRO Travel, рекламный креатив': 'IQRO Travel, жарнамалық креатив',
+      'Карточка товара: мясорубка': 'Тауар карточкасы: ет тартқыш',
+      'Карточка товара: аэрогриль': 'Тауар карточкасы: аэрогриль',
+      'Карточка товара: пароочиститель': 'Тауар карточкасы: бу тазартқыш',
+      '3 плюса учёбы в Америке': 'Америкада оқудың 3 артықшылығы',
+      'Креатив о визе': 'Виза туралы креатив',
+      'Креатив розыгрыша': 'Ұтыс ойынының креативі',
+      'Розыгрыш iPhone и Dyson': 'iPhone және Dyson ұтыс ойыны',
+      'Шапка YouTube-канала': 'YouTube-арнаның баннері',
+      'Обложка YouTube': 'YouTube мұқабасы',
+      'Опрос о жизни в США': 'АҚШ-тағы өмір туралы сауалнама',
+      'Привилегии для студентов в США': 'АҚШ-тағы студенттерге арналған жеңілдіктер',
+      'Цены на продукты в США': 'АҚШ-тағы азық-түлік бағасы'
+    };
+
+    // Заголовки разбиты на слова для анимации, порядок слов в казахском другой — заменяем целиком.
+    var KK_HTML = {
+      'h1': '<span class="h1-line"><span class="w lime-flow"><span>Брендіңізді</span></span> <span class="w"><span>ерекшелендіретін</span></span></span> <span class="h1-line"><span class="w"><span>дизайн</span></span></span>',
+      '.about-text': '<span class="aw">Бизнесіңізге </span><span class="aw">әлеуметтік </span><span class="aw">желілерде </span><span class="aw">сенімді </span><span class="aw">көрінуге </span><span class="aw">көмектесемін. </span><span class="aw">Клиенттер </span><span class="aw">ұсынысыңызды </span><span class="aw lime">бірден </span><span class="aw">түсініп, </span><span class="aw">сізге </span><span class="aw">хабарласқысы </span><span class="aw">келетіндей </span><span class="aw">дизайн </span><span class="aw">жасаймын.</span>'
+    };
+
+    // Запоминаем всё, что переводится, чтобы вернуть русский без перезагрузки.
+    var items = [];
+    var walker = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) {
+      var key = walker.currentNode.data.trim();
+      if (KK[key]) items.push({ el: walker.currentNode, ru: walker.currentNode.data, kk: walker.currentNode.data.replace(key, KK[key]) });
+    }
+    ['alt', 'aria-label', 'content'].forEach(function (attr) {
+      document.querySelectorAll(attr === 'content' ? 'meta[name="description"]' : '[' + attr + ']').forEach(function (el) {
+        var ru = el.getAttribute(attr);
+        if (KK[ru]) items.push({ el: el, attr: attr, ru: ru, kk: KK[ru] });
+      });
+    });
+    var ruHtml = {};
+    Object.keys(KK_HTML).forEach(function (sel) { ruHtml[sel] = document.querySelector(sel).innerHTML; });
+
+    var buttons = document.querySelectorAll('.lang button');
+
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      items.forEach(function (item) {
+        var value = item[lang];
+        if (item.attr) item.el.setAttribute(item.attr, value);
+        else item.el.data = value;
+      });
+      Object.keys(KK_HTML).forEach(function (sel) {
+        document.querySelector(sel).innerHTML = lang === 'kk' ? KK_HTML[sel] : ruHtml[sel];
+      });
+      buttons.forEach(function (btn) { btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang)); });
+    }
+
+    // Плавная смена: страница перетекает из одного языка в другой, а блок на экране остаётся на месте.
+    function switchLang(lang) {
+      var apply = function () {
+        var anchor = Array.prototype.find.call(document.querySelectorAll('main>section,footer'), function (el) {
+          return el.getBoundingClientRect().bottom > window.innerHeight / 3;
+        });
+        var top = anchor.getBoundingClientRect().top;
+        setLang(lang);
+        window.scrollBy({ top: anchor.getBoundingClientRect().top - top, behavior: 'instant' });
+      };
+      var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (document.startViewTransition && !still) document.startViewTransition(apply);
+      else apply();
+    }
+
+    // Порядок выбора: ссылка ?lang=kk, сохранённый выбор, язык браузера.
+    var fromUrl = new URLSearchParams(location.search).get('lang');
+    var saved = null;
+    try { saved = localStorage.getItem('lang'); } catch (e) {}
+    if ((fromUrl || saved || (navigator.language || '').slice(0, 2)) === 'kk') setLang('kk');
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (btn.dataset.lang === document.documentElement.lang) return;
+        switchLang(btn.dataset.lang);
+        try { localStorage.setItem('lang', btn.dataset.lang); } catch (e) {}
+        if (fromUrl) history.replaceState(null, '', '?lang=' + btn.dataset.lang + location.hash);
+      });
     });
   })();
 </script>

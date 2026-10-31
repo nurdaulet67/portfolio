@@ -4,7 +4,7 @@
     {
       "name": "portfolio",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "4174", "--directory", "C:/Users/Nurdaulet/Downloads/Portfolio/site"],
+      "runtimeArgs": ["-m", "http.server", "4174", "--directory", "C:/Users/Nurdaulet/Documents/Portfolio/site"],
       "port": 4174
     }
   ]
